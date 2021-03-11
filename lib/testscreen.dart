@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 class TestScreen extends StatelessWidget {
@@ -7,7 +5,9 @@ class TestScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.red,
-      body: Container(),
+      body: Container(
+        child: Text("Test Screen"),
+      ),
     );
   }
 }

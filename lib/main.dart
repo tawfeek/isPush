@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:ispush_flutter_app/protocols_list.dart';
+import 'package:ispush_flutter_app/testscreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,6 +30,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final GlobalKey<NavigatorState> navigatorKey =
+      GlobalKey(debugLabel: "Main Navigator");
   final FirebaseMessaging fcm = FirebaseMessaging();
   String bodyNotification = "";
   String updatedText = "";
@@ -44,11 +47,21 @@ class _MyHomePageState extends State<MyHomePage> {
         onLaunch: (Map<String, dynamic> message) async {
       //  updateText(message['Body'].toString());
       print('onLaunch: body part $message');
+      // navigatorKey.currentState
+      //   .push(MaterialPageRoute(builder: (_) => TestScreen()));
+
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (BuildContext context) => TestScreen()));
     },
         //called when the app is in the background and you open it by clicking on the notification
         onResume: (Map<String, dynamic> message) async {
       // updateText(message['Body'].toString());
       print('onResume: body part $message');
+      // navigatorKey.currentState
+      //    .push(MaterialPageRoute(builder: (_) => TestScreen()));
+
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (BuildContext context) => TestScreen()));
     });
   }
 
