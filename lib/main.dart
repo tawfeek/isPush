@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:ispush_flutter_app/protocols_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -38,35 +39,26 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Are you ready for Hackathon ?',
-            )
-          ],
+        appBar: AppBar(
+          title: Text(widget.title),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        body: SafeArea(
+            child: Container(
+          padding: EdgeInsets.only(left: 20, right: 20),
+          child: Container(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 30.0,
+                ),
+                Text("Please pick a topic / topics"),
+                ProtocolsList()
+              ],
+            ),
+          ),
+        )));
   }
 }
