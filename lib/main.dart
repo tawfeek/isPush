@@ -29,14 +29,32 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final FirebaseMessaging meesaging = FirebaseMessaging();
+  final FirebaseMessaging meesage = FirebaseMessaging();
+
+  void firebaseTrigger(BuildContext context) async {
+    meesage.configure(
+        //called when your app is in the foreground and you recieve a push notification
+        onMessage: (Map<String, dynamic> message) async {
+      print('onMessage: $message');
+    },
+        //when app closed and you open the app by clicking on the notification
+        onLaunch: (Map<String, dynamic> message) async {
+      print('onLaunch: $message');
+    },
+        //called when the app is in the background and you open it by clicking on the notification
+        onResume: (Map<String, dynamic> message) async {
+      print('onResume: body part ' + message['Body']);
+    });
+  }
 
   @override
   void initState() {
     super.initState();
-    meesaging.getToken().then((token) {
+    meesage.getToken().then((token) {
       print('token:' + token);
     });
+
+    firebaseTrigger(context);
   }
 
   @override
@@ -54,8 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 SizedBox(
                   height: 30.0,
                 ),
-                Text("Please pick a topic / topics"),
-                ProtocolsList()
+                // Text("Please pick a topic / topics"),
+                // ProtocolsList()
               ],
             ),
           ),
