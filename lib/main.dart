@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //   .push(MaterialPageRoute(builder: (_) => TestScreen()));
 
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (BuildContext context) => TestScreen()));
+          MaterialPageRoute(builder: (BuildContext context) => TestPage()));
     },
         //called when the app is in the background and you open it by clicking on the notification
         onResume: (Map<String, dynamic> message) async {
@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //    .push(MaterialPageRoute(builder: (_) => TestScreen()));
 
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (BuildContext context) => TestScreen()));
+          MaterialPageRoute(builder: (BuildContext context) => TestPage()));
     });
   }
 
